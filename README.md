@@ -16,14 +16,14 @@ Each sample describes a celestial object with photometric and spectroscopic feat
 
 ## 📂 Repository structure
 
-heavenly-bodies-classification\ 
+heavenly-bodies-classification \ 
 │ \
 │── data\
 │ │── star_classification.csv\
 │ \
 │── src\
-│ ├── preprocessing.py\
-│ ├── modeling.py\
+│ │── preprocessing.py\
+│ │── modeling.py\
 │ │── evaluation.py\
 │\
 │── main.py\
