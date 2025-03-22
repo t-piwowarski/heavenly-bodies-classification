@@ -52,7 +52,58 @@ Each sample describes a celestial object with photometric and spectroscopic feat
 
 ---
 
-## 📂 Repository structure
+## 📊 Models & Techniques
+
+  | Model           | Description |
+  |:----------------:|:----------:|
+  | KNN            | In order to balance the classes, the **GALAXY** set was undersampled, while the **STAR** and **QSO** sets were upsampled using `SMOTE`. The number of objects of each class in the training set was **25000**. The number N of nearest neighbors was '`k=15`. |
+  | Decision Tree  | Trained on scaled, original data with `criterion=gini`, `class_weight=balanced`, `min_samples_split=2` |
+  | Random Forest  | Trained on scaled, original data with `criterion=gini`, `class_weight=balanced`, `min_samples_split=2` |
+
+---
+
+## ✅ Results summary
+
+### K-Nearest Neighbor Classification
+
+  | Parameter | Galaxy | Star | QSO |
+  |:---------:|:------:|:----:|:---:|
+  | Recall | 0.9180 | 0.9054 | 0.9711 |
+  | Accuracy | 0.9281 | 0.9703 | 0.9557 |
+  | Precision | 0.9594 | 0.9359 | 0.8464 |
+  | Specificity | 0.9430 | 0.9855 | 0.9514 |
+
+  <img src="docs/images/confusion_matrix_knn.png" width="500">
+
+  <img src="docs/images/roc_curve_knn.png" width="500">
+
+### Decision Tree Classification
+
+  | Parameter | Galaxy | Star | QSO |
+  |:---------:|:------:|:----:|:---:|
+  | Recall | 0.9734 | 0.9072 | 0.9954 |
+  | Accuracy | 0.9657 | 0.9674 | 0.9981 |
+  | Precision | 0.9690 | 0.9198 | 0.9960 |
+  | Specificity | 0.9543 | 0.9815 | 0.9989 |
+
+  <img src="docs/images/confusion_matrix_dtc.png" width="500">
+
+  <img src="docs/images/roc_curve_dtc.png" width="500">
+
+### Random Forrest Classification
+
+  | Parameter | Galaxy | Star | QSO |
+  |:---------:|:------:|:----:|:---:|
+  | Recall | 0.9869 | 0.9186 | 0.9997 |
+  | Accuracy | 0.9767 | 0.9784 | 0.9983 |
+  | Precision | 0.9743 | 0.9658 | 0.9923 |
+  | Specificity | 0.9619 | 0.9924 | 0.9979 |
+
+  <img src="docs/images/confusion_matrix_rfc.png" width="500">
+
+  <img src="docs/images/roc_curve_rfc.png" width="500">
+
+  ## 📂 Repository structure
 
 heavenly-bodies-classification\
 │── data\
@@ -114,53 +165,20 @@ heavenly-bodies-classification\
 
 ---
 
-## 📊 Models & Techniques
+## 📥 Downloading data
 
-  | Model           | Description |
-  |:----------------:|:----------:|
-  | KNN            | In order to balance the classes, the **GALAXY** set was undersampled, while the **STAR** and **QSO** sets were upsampled using `SMOTE`. The number of objects of each class in the training set was **25000**. The number N of nearest neighbors was '`k=15`. |
-  | Decision Tree  | Trained on scaled, original data with `criterion=gini`, `class_weight=balanced`, `min_samples_split=2` |
-  | Random Forest  | Trained on scaled, original data with `criterion=gini`, `class_weight=balanced`, `min_samples_split=2` |
+  Before running the project, you need to manually download the dataset from Kaggle:
 
----
+  1. Go to: [Stellar Classification Dataset - SDSS17](https://www.kaggle.com/datasets/fedesoriano/stellar-classification-dataset-sdss17/data)
+  2. Download the file star_classification.csv
+  3. Create a folder named data in the project root (if it doesn't exist)
+  4. Place the downloaded file in the data/ folder like this:
+     heavenly-bodies-classification\
+     │── data\
+     │   │── star_classification.csv\
+     │── main.py\
+     │── ...\
+     
+  After this, you're ready to run the project
 
-## ✅ Results summary
 
-### K-Nearest Neighbor Classification
-
-  | Parameter | Galaxy | Star | QSO |
-  |:---------:|:------:|:----:|:---:|
-  | Recall | 0.9180 | 0.9054 | 0.9711 |
-  | Accuracy | 0.9281 | 0.9703 | 0.9557 |
-  | Precision | 0.9594 | 0.9359 | 0.8464 |
-  | Specificity | 0.9430 | 0.9855 | 0.9514 |
-
-  <img src="docs/images/confusion_matrix_knn.png" width="500">
-
-  <img src="docs/images/roc_curve_knn.png" width="500">
-
-### Decision Tree Classification
-
-  | Parameter | Galaxy | Star | QSO |
-  |:---------:|:------:|:----:|:---:|
-  | Recall | 0.9734 | 0.9072 | 0.9954 |
-  | Accuracy | 0.9657 | 0.9674 | 0.9981 |
-  | Precision | 0.9690 | 0.9198 | 0.9960 |
-  | Specificity | 0.9543 | 0.9815 | 0.9989 |
-
-  <img src="docs/images/confusion_matrix_dtc.png" width="500">
-
-  <img src="docs/images/roc_curve_dtc.png" width="500">
-
-### Random Forrest Classification
-
-  | Parameter | Galaxy | Star | QSO |
-  |:---------:|:------:|:----:|:---:|
-  | Recall | 0.9869 | 0.9186 | 0.9997 |
-  | Accuracy | 0.9767 | 0.9784 | 0.9983 |
-  | Precision | 0.9743 | 0.9658 | 0.9923 |
-  | Specificity | 0.9619 | 0.9924 | 0.9979 |
-
-  <img src="docs/images/confusion_matrix_rfc.png" width="500">
-
-  <img src="docs/images/roc_curve_rfc.png" width="500">
