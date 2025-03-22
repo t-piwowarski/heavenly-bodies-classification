@@ -17,7 +17,7 @@ Each sample describes a celestial object with photometric and spectroscopic feat
 ## 🧪 Exploratory Data Analysis (EDA)
 
 ### 📌 Data Cleaning
-- Removed irrelevant ID-based columns: `obj_ID`, `run_ID`, `rerun_ID`, `field_ID`, `fiber_ID`, `spec_obj_ID`, `plate`, `MJD`, `cam_col`
+- Removed irrelevant ID-based columns: `obj_ID`, `run_ID`, `rerun_ID`, `field_ID`, `fiber_ID`, `spec_obj_ID`
 - Converted class names into numerical values using `factorize()`:
   - Galaxy → 0
   - QSO → 1
@@ -37,6 +37,7 @@ Each sample describes a celestial object with photometric and spectroscopic feat
 - Observations:
   - Strong correlation among photometric features: `u`, `g`, `r`, `i`, `z`
   - ID-related columns (now removed) had no predictive value
+  - Due to low correlation the following metadata was removed: `plate`, `MJD`, `cam_col`
   - Some features like `alpha` and `delta` showed very weak correlation with class
 
 ### 📦 Feature Selection
