@@ -14,6 +14,39 @@ Each sample describes a celestial object with photometric and spectroscopic feat
 
 ---
 
+## 🧪 Exploratory Data Analysis (EDA)
+
+### 📌 Data Cleaning
+- Removed irrelevant ID-based columns: `obj_ID`, `run_ID`, `rerun_ID`, `field_ID`, `fiber_ID`, `spec_obj_ID`, `plate`, `MJD`, `cam_col`
+- Converted class names into numerical values using `factorize()`:
+  - Galaxy → 0
+  - QSO → 1
+  - Star → 2
+
+### 📈 Class Distribution
+
+- The original dataset is **imbalanced**:
+  - Galaxy: ~41,000 samples
+  - Star: ~15,000 samples
+  - QSO: ~13,000 samples
+- Displayed as a pie chart using `matplotlib`
+
+### 📊 Correlation Matrix
+
+- Used `sns.heatmap()` to visualize Pearson correlations between features
+- Observations:
+  - Strong correlation among photometric features: `u`, `g`, `r`, `i`, `z`
+  - ID-related columns (now removed) had no predictive value
+  - Some features like `alpha` and `delta` showed very weak correlation with class
+
+### 📦 Feature Selection
+
+- Kept key physical features such as magnitudes and `redshift`
+- Removed metadata and IDs
+- Final features used for modeling: `[u, g, r, i, z, redshift, alpha, delta]`
+
+---
+
 ## 📂 Repository structure
 
 heavenly-bodies-classification\
